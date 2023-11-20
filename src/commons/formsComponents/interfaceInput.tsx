@@ -9,6 +9,8 @@ export interface inputProps{
     error?: string,
     maxlength?:number,
     minlength?:number
-    stringData?:string
+    stringData?:string,
+    readonly?:boolean,
+    value?:string | number | readonly string[] | undefined
 
 }

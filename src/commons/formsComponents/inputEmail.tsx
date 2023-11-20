@@ -1,4 +1,4 @@
-import { inputProps } from "./InterfaceInput";
+import { inputProps } from "./interfaceInput";
 
 export const InputEmail = (props:inputProps) => {
 
@@ -14,6 +14,8 @@ export const InputEmail = (props:inputProps) => {
         type="text"
         className="form-control"
         placeholder={props.placeholder}
+        readOnly={props.readonly}
+        value={props.value}
         {...props.register(props.name,
           {
             required:{

@@ -14,7 +14,8 @@ export const ErrorMsg = ({error}:ErrorProps) =>{
     
 
     return (<>
-        {authError!=""?<div className="alert alert-danger" role="alert">{authError}</div>:""}</>
+        {authError!=""?<div className="alert alert-danger" role="alert">{authError}</div>:""}
+        </>
         );
     
 };

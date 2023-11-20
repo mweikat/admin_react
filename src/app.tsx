@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
-
-import Loader from "./commons/loader";
-
-
+import Loader from "./commons/loader/loader";
 import { Routes } from './routes/routes';
 
 

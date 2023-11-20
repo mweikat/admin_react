@@ -4,6 +4,7 @@ import { Register } from "../auth/register/register";
 import Layout from "../admin/main/layout/layout";
 import ProtectedRoutes from "./protected";
 import { MyAccount } from "../admin/pages/myAccount/myAccount";
+import { ResetPassword } from "../auth/reset-password/reset-password";
 
 const router = createBrowserRouter([
     {
@@ -11,12 +12,16 @@ const router = createBrowserRouter([
         element:<Login/>,
     },
     {
-      path:"/login",
+      path:"/auth/login",
       element:<Login/>,
     },
     {
-      path:"/register",
+      path:"/auth/register",
       element:<Register/>,
+    },
+    {
+      path:"/auth/reset-password",
+      element:<ResetPassword/>,
     },
     {
       path:"*",
@@ -27,13 +32,16 @@ const router = createBrowserRouter([
       element:<ProtectedRoutes/>,
       children:[
         { 
-          path:"/home",
-          element:<Layout/>
+          path:"/admin/*",
+          element:<Layout/>,
+          children:[
+            { 
+              path:"account",
+              element:<MyAccount/>
+            }
+          ]
         },
-        { 
-          path:"/account",
-          element:<MyAccount/>
-        }
+        
       ]
     },
 ]);

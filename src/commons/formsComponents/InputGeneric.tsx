@@ -1,5 +1,5 @@
 
-import { inputProps } from "./InterfaceInput";
+import { inputProps } from "./interfaceInput";
 
 export const InputGeneric = (props:inputProps) => {
 
@@ -24,6 +24,8 @@ export const InputGeneric = (props:inputProps) => {
           className="form-control"
           placeholder={props.placeholder}
           maxLength={props.maxlength}
+          readOnly={props.readonly}
+          value={props.value}
           {...props.register(props.name,
             {
               required:{

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { inputProps } from "./InterfaceInput";
 
-export const InputPasword = (props:inputProps) => {
+export const InputPaswordLogin = (props:inputProps) => {
 
   let requiredField:boolean = false;
   const [typeInput,setTypeInput] = useState("password");

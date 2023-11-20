@@ -1,19 +1,34 @@
-import { useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import { Top } from "../top/top";
-import { Link, Outlet } from "react-router-dom";
+//import { SideBar } from "../sideBar/sideBar";
+import Loader from "../../../commons/loader/loader";
+import { useEffect, useState } from "react";
 
 
 function Layout(){
-    console.log('ejecutar getUser 1');
+
+    const [loading, setloading] = useState(false);
+
     useEffect(()=>{
-        console.log('ejecutar getUser 2');
-    },[]);
+        setloading(true);
+        setTimeout(() => {
+          setloading(false);
+        }, 1000);
+    
+      },[])
 
     return (
             <>
-            <Top></Top>
-            <Link to={'/account'}></Link>
-            <Outlet></Outlet>
+            <header>
+                <Top></Top>
+                {/*<SideBar></SideBar>*/}
+            </header>
+
+            <main style={{marginTop: '58px'}}>
+                <div className="container pt-4">
+                {loading?<Loader/>:<Outlet/>}
+                </div>
+            </main>
             </>
     )
 }

@@ -1,13 +1,19 @@
 import http from '../commons/axios/privateAxios'
+import UserModel from "../models/user";
 
 class UserService {
 
     version = import.meta.env.VITE_API_V1;
 
-    getUserInfo(){
-        return http.get(`${this.version}/user`)
+    async getUserInfo(){
+
+        const user = await http.get<UserModel>(`${this.version}/user`).then((response) => {
+            return response.data;
+        });
+    
+        return user;
     }
 
 }
 
-export default UserService;
+export default new UserService();

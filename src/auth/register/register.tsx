@@ -1,17 +1,13 @@
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
 import '../auth.css';
-import UserModel from "../../Models/User";
+import UserModel from "../../models/user";
 import { AxiosError } from "axios";
 import { useState } from "react";
-import { InputGeneric } from "../../commons/formsComponents/InputGeneric";
-import { InputPaswordConfirm } from "../../commons/formsComponents/inputPasswordConfirm";
 import AuthService from "../../services/auth.service";
-
+import { InputPasword,InputEmail,InputGeneric,InputPaswordConfirm } from "../../commons/formsComponents";
 import { useAuth } from "../authProvider";
 import { AuthLayout } from "../layout/authLayout";
-import { InputEmail } from "../../commons/formsComponents/inputEmail";
-import { InputPasword } from "../../commons/formsComponents/inputPasswordLogin";
 import { ErrorMsg } from "../../commons/msg/errorMsg";
 import { SuccessMsg } from "../../commons/msg/successMsg";
 
@@ -82,7 +78,7 @@ export const  Register = ()=> {
                     &oacute;
                 </div>
                 <div className="text-center">
-                    <Link to="/login" className="text-primary" >Inicie Sesi&oacute;n</Link>
+                    <Link to="/auth/login" className="text-primary" >Inicie Sesi&oacute;n</Link>
                 </div>
             </div>
 

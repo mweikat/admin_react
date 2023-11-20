@@ -12,7 +12,7 @@ class AuthService {
     }
 
     login(data:LoginModel){
-        return http.post(`${this.version}/auth/login`,data);
+        return http.post<JSON>(`${this.version}/auth/login`,data);
     }
 
     isLoggued(){
@@ -28,7 +28,7 @@ class AuthService {
     }
 
     private goTologinPage(){
-        window.location.href='/login'
+        window.location.href='/auth/login'
     }
 
 }

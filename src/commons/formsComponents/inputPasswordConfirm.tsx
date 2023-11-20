@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { inputProps } from "./InterfaceInput";
+import { inputProps } from "./interfaceInput";
 
 export const InputPaswordConfirm = (props:inputProps) => {
 
@@ -91,7 +91,7 @@ export const InputPaswordConfirm = (props:inputProps) => {
         })
       }
     />
-      <button className="btn btn-outline-secondary" type="button" id="button-addon2-2" onClick={handleClick}>
+      <button className="btn btn-outline-secondary" type="button" onClick={handleClick}>
         {typeInput=="text" ? <i className="bi bi-eye-fill"></i>:<i className="bi bi-eye-slash-fill"></i>}
       </button>
     </div>

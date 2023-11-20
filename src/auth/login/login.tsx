@@ -1,8 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link, Navigate } from "react-router-dom";
 import { AuthLayout } from "../layout/authLayout";
-import { InputEmail } from '../../commons/formsComponents/inputEmail';
-import { InputPasword } from '../../commons/formsComponents/inputPasswordLogin';
+import { InputEmail,InputPaswordLogin } from '../../commons/formsComponents';
 import { useAuth } from '../authProvider';
 import AuthService from '../../services/auth.service';
 import { AxiosError } from 'axios';
@@ -19,7 +18,7 @@ export const Login = () => {
     const [loginError,setLoginError] = useState('');
 
     if(auth.isAuthenticated)
-        return <Navigate to={"/home"}/>
+        return <Navigate to={"/admin"}/>
 
     const onSubmit = handleSubmit((data)=>{
         
@@ -27,16 +26,17 @@ export const Login = () => {
         loginModel.email = data.email;
         loginModel.password = data.password;
 
-        AuthService.login(loginModel).then((response: unknown) => {
-            
-            localStorage.setItem('access_token',JSON.stringify(response));
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        AuthService.login(loginModel).then((response: JSON|any) => {
+           //console.log(response.data);
+            localStorage.setItem('access_token',response.data.token);
             auth.changeLoggedIn();
 
           }).catch((err: Error) => {
             if (err instanceof AxiosError) {
                 //console.log(err);
                 //errorLogin.changeMsg("err.response?.data");
-                setLoginError(err.response?.data);   
+                setLoginError(err.response?.data.message);   
               } 
         });
         
@@ -52,7 +52,7 @@ export const Login = () => {
                         <InputEmail name="email" register={register} required={true} error={errors.email?.message?.toString()} placeholder='Ingrese su correo electrónico'></InputEmail>
                     </div>
                     <div className="mb-3">
-                        <InputPasword name='password' register={register} required={true} error={errors.password?.message?.toString()} placeholder='ingrese su contraseña'/>
+                        <InputPaswordLogin name='password' register={register} required={true} error={errors.password?.message?.toString()} placeholder='ingrese su contraseña'/>
                     </div>
                     <ErrorMsg error={loginError}/>
                     <div className="mb-3">
@@ -61,7 +61,7 @@ export const Login = () => {
                         </div>
                         <div className="mt-3">
                             <div className="text-center">
-                            <Link to={''} className="forGetText">Olvid&oacute; su contrase&ntilde;a?</Link>
+                            <Link to="/auth/reset-password" >Olvid&oacute; su contrase&ntilde;a?</Link>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ export const Login = () => {
                             &oacute;
                         </div>
                         <div className="text-center">
-                        <Link to="/register" className="text-primary" >Registrese</Link>
+                        <Link to="/auth/register" className="text-primary" >Registrese</Link>
                         </div>
                     </div>
 
