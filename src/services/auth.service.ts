@@ -7,7 +7,7 @@ class AuthService {
 
     version = import.meta.env.VITE_API_V1;
 
-     create(data:UserModel){
+    create(data:UserModel){
         return http.post(`${this.version}/auth/register`,data)
     }
 
@@ -25,6 +25,11 @@ class AuthService {
     logout(){
         localStorage.removeItem('access_token');    
         this.goTologinPage();
+    }
+
+    resetPassEmail(data:string){
+        const emailToJson = {email:data};
+        return http.post(`${this.version}/auth/reset_pass/mail`,emailToJson);
     }
 
     private goTologinPage(){
