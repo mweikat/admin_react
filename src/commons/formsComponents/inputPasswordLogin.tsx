@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { inputProps } from "./InterfaceInput";
+import { inputProps } from "./interfaceInput";
 
 export const InputPaswordLogin = (props:inputProps) => {
 
