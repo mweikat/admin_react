@@ -1,5 +1,5 @@
 
-import '../Auth.css';
+import '../auth.css';
 interface DefaultLayoutProps {
     children: React.ReactNode;
 }
