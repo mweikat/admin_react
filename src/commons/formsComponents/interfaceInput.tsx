@@ -12,5 +12,5 @@ export interface inputProps{
     stringData?:string,
     readonly?:boolean,
     value?:string | number | readonly string[] | undefined
-
+    newClass?:string
 }
